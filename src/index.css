@@ -1,0 +1,131 @@
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Inspired by Etmsk: warmer, richer gold */
+  --bg-void:        #000000;
+  --bg-deep:        #0a0a0a;
+  --bg-card:        #0f0f0f;
+  --bg-elevated:    #1a1a1a;
+  --border-subtle:  rgba(255, 255, 255, 0.05);
+  --border-accent:  rgba(200, 144, 42, 0.28);
+
+  --gold:           #c8902a;
+  --gold-light:     #e8b84b;
+  --gold-dark:      #7a5210;
+  --gold-dim:       rgba(200, 144, 42, 0.12);
+  --gold-glow:      rgba(200, 144, 42, 0.25);
+  --text:           #d4c4a8;
+  --text-muted:     rgba(212, 196, 168, 0.45);
+  --text-dim:       rgba(212, 196, 168, 0.25);
+
+  --radius-sm:  4px;
+  --radius-md:  10px;
+  --radius-lg:  18px;
+  --radius-xl:  30px;
+
+  --shadow-card: 0 4px 40px rgba(0,0,0,0.7);
+  --shadow-glow: 0 0 40px rgba(200,144,42,0.1);
+
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+}
+
+/* ─── Reset ─────────────────────────────────────────���───────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-void);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ─── Utility ─────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+/* ─── Scroll Reveal ──────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Shared Button — Gold Fill ──────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.btn-gold:hover::before { opacity: 1; }
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px var(--gold-glow);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(200,144,42,0.4); }
+
+/* ─── Selection ──────────────────────────────────────────── */
+::selection {
+  background: rgba(200, 144, 42, 0.2);
+  color: var(--text);
+}

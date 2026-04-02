@@ -1,0 +1,154 @@
+.section {
+  padding: 7.5rem 0;
+  background: var(--bg-void);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, var(--border-accent) 50%, transparent 95%);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 6%;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.em {
+  font-style: normal;
+  background: linear-gradient(to right, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Steps row ─────────────────────────────────────────── */
+.stepsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* ── Connector line between circles ───────────────────── */
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.connector {
+  position: absolute;
+  top: 48px; /* center of circle */
+  left: calc(50% + 48px);
+  right: calc(-50% + 48px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(200,144,42,0.4), rgba(200,144,42,0.1));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Circle ────────────────────────────────────────────── */
+.circle {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.circleNum {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+
+.circleRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 144, 42, 0.22);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.step:hover .circleRing {
+  border-color: rgba(200, 144, 42, 0.55);
+  box-shadow: 0 0 24px rgba(200, 144, 42, 0.12);
+}
+
+/* ── Step text ─────────────────────────────────────────── */
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.9rem;
+}
+
+.stepBody {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .stepsRow {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .connector {
+    display: none;
+  }
+
+  .step {
+    padding: 0;
+  }
+}
